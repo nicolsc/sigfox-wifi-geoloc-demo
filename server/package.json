@@ -1,0 +1,25 @@
+{
+  "name": "wifi-geoloc",
+  "version": "1.0.0",
+  "description": "Wifi-based geolocation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "wifi",
+    "geolocation",
+    "sigfox"
+  ],
+  "author": "@nicolsc",
+  "license": "ISC",
+  "dependencies": {
+    "@mapbox/polyline": "^0.2.0",
+    "hapi": "^16.1.0",
+    "moment": "^2.17.1",
+    "node-slack": "0.0.7",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  }
+}
