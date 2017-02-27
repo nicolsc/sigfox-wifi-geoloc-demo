@@ -25,13 +25,9 @@ server.route({
 
     //    const networks = sigfox.decodeSigfoxMessage(request.payload.data);
     var sigfoxMsg = sigfox.message(request.payload);
-    console.log(sigfoxMsg)
     google.location(sigfoxMsg)
-    .then(function(sigfoxMsg){
-      slack.post(sigfoxMsg);
-
-   })
-   .catch(function(err){
+    .then(slack.post)
+    .catch(function(err){
      console.warn("❌", err.message);
      console.log(sigfoxMsg)
      slack.post(sigfoxMsg);
