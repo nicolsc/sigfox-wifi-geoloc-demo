@@ -1,29 +1,29 @@
 const Slack = require('node-slack')
 function getSlackMessage(sigfoxMessage){
   var text = ""
-  if (!sigfoxMessage.map){
+
+  if (!sigfoxMessage.maps || !sigfoxMessage.maps.length){
     return {
       username: "Wifi Geolocation Failed",
       text: "❌ No location retrieved for *"+sigfoxMessage.device+"*\n\tWifi Networks : _" + sigfoxMessage.wifiNetworks.join("_ & _")+"_",
-    }
+    };
   }
+  console.log(sigfoxMessage)
+  var attachments = [{
+    title:"Last message received "+sigfoxMessage.date.calendar,
+    color:"#230066",
+    text: "Location: \n\tLat: "+sigfoxMessage.location.lat+"\n\tLng: "+sigfoxMessage.location.lng+"\n(accuracy "+sigfoxMessage.accuracy+"m)"
+  }];
+  sigfoxMessage.maps.forEach(function(item){
+    attachments.push({
+      fallback:"Image not found ",
+      image_url:item
+    });
+  });
+
   return {
     text: "Where is device *"+sigfoxMessage.device+"* ?",
-    attachments: [
-      {
-          title:"Last message received "+sigfoxMessage.date.calendar,
-          color:"#230066",
-          text: "Location: \n\tLat: "+sigfoxMessage.location.lat+"\n\tLng: "+sigfoxMessage.location.lng+"\n(accuracy "+sigfoxMessage.accuracy+"m)"
-      },
-      {
-        fallback:"Image not found ",
-        image_url:sigfoxMessage.map.replace(/zoom\=([0-9]*)?\&/, 'zoom=12&')
-      },
-      {
-        fallback:"Image not found ☹",
-        image_url:sigfoxMessage.map
-      }
-    ]
+    attachments: attachments
   };
 }
 
