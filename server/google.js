@@ -24,7 +24,7 @@ const getLocation = function(sigfoxMessage){
       entry.maps = [];
       entry.maps.push(getGmapsStaticImgCircle(entry));
       entry.maps.push(getGmapsStaticImgMarker(entry, 12));
-
+      entry.mapLink="http://maps.google.com/maps?q="+entry.location.lat+","+entry.location.lng;
       resolve(entry);
     })
     .catch(reject);

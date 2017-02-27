@@ -12,7 +12,7 @@ function getSlackMessage(sigfoxMessage){
   var attachments = [{
     title:"Last message received "+sigfoxMessage.date.calendar,
     color:"#230066",
-    text: "Location: \n\tLat: "+sigfoxMessage.location.lat+"\n\tLng: "+sigfoxMessage.location.lng+"\n(accuracy "+sigfoxMessage.accuracy+"m)"
+    text: "Location: \n\tLat: "+sigfoxMessage.location.lat+"\n\tLng: "+sigfoxMessage.location.lng+"\n(accuracy "+sigfoxMessage.accuracy+"m)\n"+sigfoxMessage.mapLink
   }];
   sigfoxMessage.maps.forEach(function(item){
     attachments.push({
