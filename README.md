@@ -59,4 +59,4 @@ Once you're application is deployed online (Heroku or else where, doesn't matter
 
 Here is the kind of notification that you will receive :
 
-![Slack screenshot](slack-screenshot.png)
+![Slack screenshot](mkr1000-snoc/doc/slack-screenshot.png)
