@@ -14,10 +14,13 @@ Make sure you properly set the following environnement variables :
 
 ##Deploy online
 You can easily deploy on Heroku, using the following commands :
-* `$ heroku apps:create --name whatever-you-want`
+* `$ heroku apps:create whatever-you-want`
 * `$ heroku ps:scale web=1`
-* `$ heroku config:set GOOGLE_KEY=xxxxxx SLACK_TOKEN=yyyyy/zzzz`
-* `git subtree push --prefix server heroku master` 
+* `$ heroku config:set --app your-app-name  GOOGLE_KEY=xxxxxx SLACK_TOKEN=yyyyy/zzzz`
+* `git subtree push --prefix server heroku master`
+
+or
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ##Sigfox setup
 
