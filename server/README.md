@@ -19,9 +19,6 @@ You can easily deploy on Heroku, using the following commands under your root di
 * `$ heroku config:set --app your-app-name  GOOGLE_KEY=xxxxxx SLACK_TOKEN=yyyyy/zzzz`
 * `$ git subtree push --prefix server heroku master`
 
-or
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 ## Sigfox setup
 
 Once you're application is deployed online (Heroku or else where, doesn't matter), add a callback on the [Sigfox backend](http://backend.sigfox.com) with the following settings :

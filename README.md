@@ -25,7 +25,8 @@ The SiPy is programmed in micropython, find the sample code in the [sipy](./sipy
 
 Basic nodeJS application, which receive the Sigfox callback & calls the Google & Slack apis  
 
-Check the [server](./server) folder
+Check the [server](./server) folder or or
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Slack notification
 
