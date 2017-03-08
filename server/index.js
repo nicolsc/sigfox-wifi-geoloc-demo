@@ -39,7 +39,7 @@ server.route({
   path:'/locations/spotit',
   handler:function(request, reply){
     console.log('[%s] %s', request.method, request.path, request.payload);
-    if (request.payload.lat!==undefined|| request.payload.lng!==undefined || request.payload.radius!==undefined){
+    if (request.payload.lat===undefined|| request.payload.lng===undefined || request.payload.radius===undefined){
       return reply("❌").code(400);
     }
     //Sigfox callback : reply 200 as soon as possible
