@@ -24,7 +24,7 @@ module.exports = {
     if (message.type=='spotit'){
       message.location = {lat: requestBody.lat, lng: requestBody.lng};
       if (requestBody.radius){
-        message.location.radius = requestBody.radius*1000; //km -> m
+        message.location.radius = requestBody.radius;
       }
     }
     return message;
