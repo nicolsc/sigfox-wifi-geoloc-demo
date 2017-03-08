@@ -22,7 +22,7 @@ function getPoints(center,radius, precision){
     var point = {
       lat: Math.asin(Math.sin(lat)*Math.cos(diameter) + Math.cos(lat)*Math.sin(diameter)*Math.cos(tmp))
     };
-    point.lng = ((lng + Math.atan(Math.sin(tmp)*Math.sin(diameter)*Math.cos(lat), Math.cos(diameter)-Math.sin(lat)*Math.sin(point.lat))) * 180) / π;
+    point.lng = ((lng + Math.atan2(Math.sin(tmp)*Math.sin(diameter)*Math.cos(lat), Math.cos(diameter)-Math.sin(lat)*Math.sin(point.lat))) * 180) / π;
     point.lat = point.lat*180/π;
 
     points.push(point);
