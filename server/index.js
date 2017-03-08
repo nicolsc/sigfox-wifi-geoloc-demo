@@ -17,7 +17,7 @@ server.route({
   handler:function(request, reply){
     console.log('[%s] %s', request.method, request.path, request.payload);
 
-    if (!request.payload.data || !request.payload.data.match(/([0-F]{12})*/gi).length){
+    if (!request.payload || !request.payload.data || !request.payload.data.match(/([0-F]{12})*/gi).length){
       return reply("❌").code(400);
     }
     //Sigfox callback : reply 200 as soon as possible
