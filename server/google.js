@@ -1,7 +1,7 @@
 const request = require('request-promise');
 const circle = require('./circle');
 const DEFAULT_ZOOM=14;
-const getLocation = function(sigfoxMessage){
+const getWifiLocation = function(sigfoxMessage){
   return new Promise(function(resolve, reject){
     var body = {
       "considerIp": "false",
@@ -25,6 +25,7 @@ const getLocation = function(sigfoxMessage){
       entry.maps.push(getGmapsStaticImgCircle(entry));
       entry.maps.push(getGmapsStaticImgMarker(entry, 12));
       entry.mapLink="http://maps.google.com/maps?q="+entry.location.lat+","+entry.location.lng;
+      entry.radius=entry.accuracy;
       resolve(entry);
     })
     .catch(reject);
@@ -48,7 +49,7 @@ const getGmapsBaseURI = function(zoom){
 const getGmapsStaticImgCircle = function(entry, zoom){
   var uri = getGmapsBaseURI(zoom);
 
-  uri += "path=weight:0|fillcolor:0x23006688|enc:"+circle.getCircleEncodedPath(entry.location, entry.accuracy*0.001, 60);
+  uri += "path=weight:0|fillcolor:0x23006688|enc:"+circle.getCircleEncodedPath(entry.location, entry.radius*0.001, 60);
   return uri;
 };
 const getGmapsStaticImgMarker = function(entry, zoom){
@@ -57,9 +58,9 @@ const getGmapsStaticImgMarker = function(entry, zoom){
   return uri;
 };
 module.exports = {
-  location: function(sigfoxMsg){
+  locationWifi: function(sigfoxMsg){
     return new Promise(function(resolve, reject){
-      getLocation(sigfoxMsg)
+      getWifiLocation(sigfoxMsg)
       .then(function(computed){
         return resolve(Object.assign(sigfoxMsg,computed));
       })
