@@ -13,7 +13,7 @@ server.connection({
 
 server.route({
   method: 'POST',
-  path:'/locations',
+  path:'/locations/wifi',
   handler:function(request, reply){
     console.log('[%s] %s', request.method, request.path, request.payload);
 
