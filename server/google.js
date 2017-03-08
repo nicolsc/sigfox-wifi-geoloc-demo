@@ -38,8 +38,7 @@ const getGmapsBaseURI = function(zoom){
 };
 const getGmapsStaticImgCircle = function(entry, zoom){
   var uri = getGmapsBaseURI(zoom);
-
-  uri += "path=weight:0|fillcolor:0x23006688|enc:"+circle.getCircleEncodedPath(entry.location, entry.radius*0.001, 60);
+  uri += "path=weight:0|fillcolor:0x23006688|enc:"+circle.getCircleEncodedPath(entry.location, entry.location.radius*0.001, 180);
   return uri;
 };
 const getGmapsStaticImgMarker = function(entry, zoom){
@@ -77,5 +76,8 @@ module.exports = {
       })
       .catch(reject);
     });
+  },
+  locationSpotit: function(sigfoxMsg){
+    return Promise.resolve(Object.assign(sigfoxMsg,getMessageWithMaps(sigfoxMsg)));
   }
 };

@@ -24,7 +24,7 @@ server.route({
     reply("☺");
 
     //    const networks = sigfox.decodeSigfoxMessage(request.payload.data);
-    var sigfoxMsg = sigfox.message(request.payload);
+    var sigfoxMsg = sigfox.message(request.payload, 'wifi');
     google.locationWifi(sigfoxMsg)
     .then(slack.post)
     .catch(function(err){
@@ -44,6 +44,15 @@ server.route({
     }
     //Sigfox callback : reply 200 as soon as possible
     reply("☺");
+    var sigfoxMsg = sigfox.message(request.payload, 'spotit');
+    google.locationSpotit(sigfoxMsg)
+    .then(slack.post)
+    .catch(function(err){
+     console.warn("❌", err.message);
+     console.log(sigfoxMsg)
+     slack.post(sigfoxMsg);
+    });
+
 
   }
 });
